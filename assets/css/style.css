@@ -2,11 +2,13 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    
+
 
 
 }
-a{text-decoration: none;
+
+a {
+    text-decoration: none;
 
 
 }
@@ -17,7 +19,7 @@ a{text-decoration: none;
     --tertiaryColor: #555;
     --whiteColor: #eee;
     --blackColor: #111;
-    --strockColor: #091e24;
+    --strockColor: #0b252c;
     --strockColor2: #235b72;
     --smallRound: 6px;
     --smallPadding: 16px;
@@ -47,17 +49,31 @@ a{text-decoration: none;
     gap: 100px;
 }
 
+.flex-row-style2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.booking {
+    display: flex;
+    gap: 8px;
+    /* text-align: center; */
+    justify-content: center;
+}
+
 .svgcontainer {
     display: flex;
-    
+
     gap: var(--smallGap);
 }
-.uniquesvg{
+
+.uniquesvg {
     padding: 2px;
     background-color: #134457;
 
     border: 2px solid var(--strockColor2);
-    
+
 }
 
 
@@ -70,7 +86,13 @@ body {
 
 p {
     font-size: 14px;
-    color: #8c8c8b;
+    color: white
+}
+
+span:hover {
+    color: #1a4ed0;
+
+
 }
 
 .project,
@@ -78,7 +100,7 @@ p {
 .education-and-exp,
 .patterners,
 .service,
-.stock,
+.stack,
 .testimonial,
 .blog,
 .contact {
@@ -87,6 +109,35 @@ p {
 
 
 }
+
+.marquee {
+    overflow: hidden;
+    position: relative;
+
+}
+
+
+.marquee-content {
+    width: 100%;
+    height: 10px;
+    display: inline-block;
+    animation: imagecontainer 20s linear infinite;
+
+
+
+}
+
+@keyframes marquee-content {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
 
 aside {
     width: 150px;
@@ -102,6 +153,19 @@ aside {
 
 }
 
+.aside-icons:hover {
+    transition: stroke 0.5 ease;
+    cursor: pointer;
+}
+
+.aside-icons:hover path{
+    stroke: #4acfea;
+}
+
+
+
+
+
 .asidecontentcontainertop {
     display: flex;
     flex-direction: column;
@@ -110,6 +174,7 @@ aside {
     justify-content: center;
 }
 
+.back-to-top,
 .aside-dates {
     padding: 12px 24px;
     border: 2px solid var(--strokecolor);
@@ -134,6 +199,11 @@ ul {
     padding: 42px;
 
 }
+
+
+
+
+
 
 .asidecontentcontainerbottom {
     display: flex;
@@ -190,6 +260,7 @@ ul {
     border-radius: 50%;
     width: 10px;
     height: 10px;
+    margin: 10px;
 }
 
 .lowerdiv {
@@ -224,7 +295,7 @@ ul {
     border: 2px solid var(--strockColor);
     padding: 8px;
     height: 350px;
-    justify-content: cente;
+    justify-content: center;
     align-items: center;
     background-color: #021a29;
 
@@ -241,6 +312,108 @@ ul {
     width: 220px;
 }
 
+.img-globe-container {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+/* Base styles for the availability indicator */
+.availability-indicator {
+    margin-top: 250px;
+    background-color: rgb(123, 124, 127);
+    border-radius: 5px;
+
+}
+
+/* Animation for popping out */
+.availability-indicator.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Keyframes for attention-grabbing animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Apply the pulse animation */
+.availability-indicator.show {
+    animation: pulse 1s infinite linear;
+}
+
+#circlepoint {
+    animation: pulse1 1s infinite linear;
+
+}
+
+#circlepiont::before,
+#circlepiont::before {
+    content: '';
+    background: rgb(0, 163, 76);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: onlineAnim 1s infinite linear;
+}
+
+#circlepiont::before {
+    animation: wave 1.5s infinite;
+}
+
+@keyframes pulse1 {
+    0% {
+        transform: scale(1);
+        opacity: 10;
+    }
+
+
+
+    20% {
+        transform: scale(1.5);
+        opacity: 0.2;
+    }
+
+
+
+    100% {
+        transform: scale(1);
+        opacity: 3;
+    }
+}
+
+@keyframes wave {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+    }
+
+    60% {
+        width: 30px;
+        height: 30px;
+        opacity: 2;
+    }
+
+    100% {
+        width: 50px;
+        height: 50px;
+        opacity: 0;
+    }
+
+}
+
 header {
     align-items: center;
     display: grid;
@@ -253,55 +426,86 @@ header {
 }
 
 .projectcard {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--mediumGap);
+    padding: var(--smallPadding);
+    justify-content: center;
+    align-items: center;
+
 }
 
-.projectcardupper,
-.projectcardlower {
+.projectcard-container {
     padding: var(--smallPadding);
     background-color: #001d31;
     align-items: center;
     justify-content: center;
-    display:flex;
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    gap: 20px;
 }
 
-.card1 {
+.projectcardupper,
+.projectcardlower {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--strockColor);
-    padding: 8px;
     gap: 20px;
-    background-color: #01365a;
-
 
 }
+
+.contentcontainer-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .mainimagecontainer {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
+    overflow: hidden;
+    position: relative;
 }
 
+
+
+
+
+
 .imagecontainer {
+    display: inline-block;
+    animation: imagecontainer 2s linear infinite;
     padding: 24px;
     background-color: #011727;
 
+
+
 }
+
+@keyframes imagecontainer {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
 
 .content {
     display: block;
     padding: 24px;
     background-color: #011727;
+
+}
+
+.content:hover,
+.projectcard-container:hover {
+    border: 1px solid var(--strockColor2);
+    display: block;
+    padding: 24px;
+    background-color: #011727;
+
 }
 
 .content-container {
@@ -322,7 +526,8 @@ header {
     border: 2px solid var(--strockColor);
     gap: 5px;
     padding: 6px;
-    background-color: #021f32;
+    background-color: #021a29;
+
     width: 100px;
     ;
 
@@ -338,19 +543,27 @@ header {
 
 }
 
+.education-container,
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mediumGap);
+}
+
 .container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 5px;
 
 }
 
 .educationcontent-container,
-.experiencecontent-container,.testimonialcontent {
+.experiencecontent-container,
+.testimonialcontent {
     display: flex;
     flex-direction: column;
     gap: var(--mediumGap);
-    
+
 }
 
 .education-and-exp {
@@ -376,10 +589,10 @@ header {
     background-color: rgb(89, 92, 105);
 }
 
-.line{
+.line {
     width: 2px;
     height: 10px;
-    
+
     background-color: rgb(78, 89, 114);
 }
 
@@ -387,27 +600,29 @@ header {
     width: 10px;
     height: 2px;
     display: flex;
-    gap:12px;
+    gap: 12px;
     background-color: rgb(76, 89, 114);
 
 }
 
-.line3{
+.line3 {
     width: 2px;
     height: 10px;
-    
+
     background-color: rgb(76, 89, 114);
-    
+
 
 }
 
 
 
-.servicecards-container,.stockcard-container,.testmonialcontainer {
+.servicecards-container,
+.stockcard-container,
+.testmonialcontainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    background-color: #012944;
+    background-color: #012035;
     padding: var(--smallPadding);
 
 
@@ -416,7 +631,8 @@ header {
 .servicecontent-container {
     display: flex;
     justify-content: space-between;
-    background-color: #013050;
+    background-color: #021a29;
+
     padding: var(--mediumPadding);
     gap: var(--mediumGap);
 
@@ -424,19 +640,87 @@ header {
 
 
 
-.stockcardscontent-container,.card4 {
-    background-color: #013050;
+.stockcardscontent-container,
+.card4 {
+    background-color: #021a29;
+
     display: flex;
     gap: var(--smallGap);
     padding: var(--smallPadding);
 
 }
 
-.servicecards-container,.stockcardscontent-container,.stockcard-container,.servicecontent-container{
-    border: 1px solid var(--strockColor);
-    
+.blogcard-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 30px;
 }
-.testmonialcontent-names{
+
+.blogcards,
+.blog-container,
+.blog-contentcontainer,
+.blog-imagecontainer {
+    padding: var(--smallPadding);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid var(--strockColor);
+
+}
+
+.blog-contentcontainer {
+    background-color: #001a2c;
+
+
+}
+
+.blog-imagecontainer {
+    background-color: #001a2c;
+    height: 170px;
+}
+
+.blog-imagecontainer:hover,.Glallelyimage-container:hover {
+    border: 1px solid var(--strockColor2);
+}
+
+.blog-contentcontainerupper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--strockColor);
+
+}
+
+.blog-contentcontainerlower {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.blog-date {
+    display: flex;
+    gap: 30px;
+}
+
+.blogdatebox {
+    border: 1px solid var(--strockColor);
+    background-color: var(--strockColor2)
+}
+
+.servicecards-container,
+.stockcardscontent-container,
+.stockcard-container,
+.servicecontent-container {
+    border: 1px solid var(--strockColor);
+
+}
+
+.testmonialcontent-names {
     display: flex;
     justify-content: space-between;
     background-color: #012944;
@@ -445,22 +729,25 @@ header {
 
 
 }
-.testmonialimage-container{
-    background-color: #01365a;
+
+.testmonialimage-container {
+    background-color: #013253;
     display: flex;
     flex-direction: column;
-   
+
     width: 80px;
 }
-.special-design2{
+
+.special-design2 {
     align-items: center;
     position: absolute;
     display: flex;
-margin: 185px 35px;
+    margin: 185px 35px;
     gap: 5px;
-    
+
 }
-.special-design3{
+
+.special-design3 {
     transform: rotate(180deg);
     display: flex;
     flex-direction: column;
@@ -468,66 +755,85 @@ margin: 185px 35px;
     align-items: center;
     margin-bottom: 48px;
 }
-.gallely-container{
-    background-color: #01365a;
+
+.gallely-container {
+
     padding: var(--smallPadding);
     display: flex;
     gap: var(--smallGap);
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.Glallelyimage-container{
+
+.Glallelyimage-container {
     padding: var(--smallPadding);
-    background-color: #001d31;
+    background-color: #021c2e;
     align-items: center;
     justify-content: center;
-    display:flex;
+    display: flex;
     height: 100%;
     width: 100%;
     object-fit: contain;
 
 }
-    
 
-.morebutton{
+
+
+.morebutton {
     width: 80px;
     margin-left: 500px;
 }
-input,textarea,button{
-    background-color: #01365a;
+
+input,
+textarea,
+button {
+    background-color: #021c2e;
     padding: 8px;
     display: flex;
-    gap:var(--smallGap);
-border: none;
-height: 40px;
+    gap: var(--smallGap);
+    border: none;
+    height: 40px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    color: white;
 }
-textarea{
+
+
+textarea {
     height: 80px;
 }
-button{
+
+button {
     justify-content: center;
     align-items: center;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.adresscontainer{
+
+.adresscontainer {
     display: grid;
     grid-template-columns: 6fr 3fr;
     gap: var(--mediumGap);
 }
-.adressbox{
+
+.adressbox {
     width: 80px;
 }
-.contact-info,.adress{
+
+.contact-info,
+.adress {
     padding: var(--mediumPadding);
-    background-color: #012944;
+    background-color: #021c2e;
     border: 2px solid var(--strockColor);
     width: 250px;
-    
+
 }
-.adress-design,.adress-design2{
+
+.adress-design,
+.adress-design2 {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -535,28 +841,23 @@ form{
     align-items: center;
     width: 10px;
 }
-.adress-design2{
+
+.adress-design2 {
     transform: rotate(-90deg);
-    margin:-20px 25px;
-    
+    margin: -20px 25px;
+
 }
-.adresscontent-container{
+
+.adresscontent-container {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-footer,.back-to-top{
+footer,
+.back-to-top {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 10px;
 }
-/* .adressline-container{
-    width: 80px;
-
-    background-color: rebeccapurple;
-} */
-    
-
-    
-    
